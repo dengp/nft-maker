@@ -11,7 +11,7 @@ module.exports.inputConfig = {
     },
     {
       path: 'other/1',
-      times: 10
+      times: 20
     }
   ]
 }

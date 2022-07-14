@@ -81,18 +81,18 @@ async function toMakeNft(otherPath, times) {
         if (XY.face[b] >= weightConfig.face[b] * times) continue;
         if (XY.glasses[c] >= weightConfig.glasses[c] * times) continue;
         if (XY.main[d] >= weightConfig.main[d] * times) continue;
-        let flag = false;
-        for (let i = 0; i < otherRandomArr.length; i++) {
-          const ele = otherRandomArr[i];
-          if((XY['other'] || {})[`${otherKeys[i]}${ele}`] >= weightConfig[`other${otherIndex}`][otherKeys[i]][ele] * times) {
-            flag = true;
-            break;
+        if (XY['other']) {
+          let flag = false;
+          for (let i = 0; i < otherRandomArr.length; i++) {
+            const ele = otherRandomArr[i];
+            if(XY['other'][`${otherKeys[i]}${ele}`] >= weightConfig[`other${otherIndex}`][otherKeys[i]][ele] * times) {
+              flag = true;
+              break;
+            }
           }
+          if (flag) continue;
         }
-        if (flag) continue;
-        
-        
-        
+        // 图片名
         dataResIds[id] = true;
         //特征数量纪录
         if(!XY.bg[a]) XY.bg[a] = 1;
@@ -120,12 +120,14 @@ async function toMakeNft(otherPath, times) {
       //记录采样
       createDoc(times, XY, dataResIds);
       
+      // 结束线程
       pool.terminate(); 
       const time_e0 = Date.now();
       console.log(`${otherPath} end`, time_e0);
       console.log(`${otherPath} 生成总耗时：${(time_e0 - time_s) / 1000}秒`);
       console.log('');
       resolve();
+
       //执行入口
       async function run(item) {
         const [a, b, c, d, e, f, g, h] = item;
