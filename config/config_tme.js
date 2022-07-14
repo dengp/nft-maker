@@ -1,88 +1,40 @@
-//模型参数配置
-module.exports.base = {
-  prop_glasses: {
-    x: 0,
-    y: 0,
-    width: 700,
-    height: 530,
-    route: 'path_prop_glasses',
-    file: 'glasses.png',
-    id: 0
+// 入口配置
+module.exports.inputConfig = {
+  projectName: 'yx_xm',
+  basePath: 'layers/yx_xm',
+  width: 2000,
+  height: 2000,
+  part: [
+    {
+      path: 'other/0',
+      times: 20
+    },
+    {
+      path: 'other/1',
+      times: 10
+    }
+  ]
+}
+
+// 稀有度配置
+module.exports.weightConfig = {
+  bg: [0.05, 0.05, 0.05, 0.05, 0.05, 0.5, 0.05, 0.05, 0.05, 0.05, 0.05],
+  face: [0.1, 0.5, 0.2, 0.2],
+  glasses: [0.2, 0.8],
+  main: [1],
+  other0: {
+    hat: [0.5, 0.25, 0.25],
+    underwear: [0.7, 0.3],
+    coat: [1],
   },
-  frontprop: {
-    x: 0,
-    y: 0,
-    width: 750,
-    height: 1068,
-    route: 'path_frontprop',
-    file: 'frontprop.png',
-    id: 1
-  },
-  front_hair: {
-    x: 0,
-    y: 0,
-    width: 700,
-    height: 530,
-    route: 'path_hair',
-    file: 'front_hair.png',
-    id: 2
-  },
-  top: {
-    x: 0,
-    y: 284,
-    width: 700,
-    height: 600,
-    route: 'path_top',
-    file: 'top.png',
-    id: 3
-  },
-  pants: {
-    x: 0,
-    y: 428,
-    width: 700,
-    height: 600,
-    route: 'path_bottom',
-    file: 'pants.png',
-    id: 4
-  },
-  shoes: {
-    x: 0,
-    y: 628,
-    width: 700,
-    height: 440,
-    route: 'path_shoe',
-    file: 'shoes.png',
-    id: 5
-  },
-  body: {
-    x: 0,
-    y: 0,
-    width: 700,
-    height: 1068,
-    route: 'path_body',
-    file: 'body.png',
-    id: 6
-  },
-  back_hair: {
-    x: 0,
-    y: 0,
-    width: 700,
-    height: 530,
-    route: 'path_hair',
-    file: 'back_hair.png',
-    id: 7
-  },
-  backprop: {
-    x: 0,
-    y: 184,
-    width: 700,
-    height: 700,
-    route: 'path_backprop',
-    file: 'backprop.png',
-    id: 8
+  other1: {
+    coat: [0.02, 0.03, 0.02, 0.02, 0.01, 0.03, 0.02, 0.05, 0.5, 0.3],
+    hat: [0.1, 0.1, 0.1, 0.1, 0.1, 0.5],
+    underwear: [0.1, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.5, 0.1],
   }
 }
 
+// 模型参数配置
 module.exports.base_yx = {
   other_hat: {
     x: 0,
@@ -132,7 +84,7 @@ module.exports.base_yx = {
     route: 'path_main',
     id: 5
   },
-  "背景": {
+  bg: {
     x: 0,
     y: 0,
     width: 2000,
@@ -140,10 +92,4 @@ module.exports.base_yx = {
     route: 'path_bg',
     id: 6
   },
-}
-
-
-//稀有度配置
-module.exports.weightConfig = {
-  backprop: [5, 5, 5, 5, 80]
 }

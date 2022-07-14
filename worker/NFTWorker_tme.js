@@ -4,7 +4,7 @@ const { create, read } = require('jimp');
 const config_tme = require('../config/config_tme');
 
 //创建NFT
-async function createNFT(config, nftParm, filePathSimple, waterMark) {
+async function createNFT(config, nftParm, filePathSimple) {
   const renderList = Object.keys(config_tme[config]).map(x => config_tme[config][x]).sort((a, b) => b.id - a.id);
   //创建一个空
   const baseImage = await create(2000, 2000);
@@ -15,11 +15,6 @@ async function createNFT(config, nftParm, filePathSimple, waterMark) {
     const file = renderList[i].file;
     let listItem = await read(file ? `${param}/${file}` : param);
     baseImage.composite(listItem, renderList[i].x, renderList[i].y);
-  }
-  if(waterMark) {
-    const waterMarkSmall =  await read(`./extra/watermark.png`);
-    waterMarkSmall.resize(2000, 2000);
-    baseImage.composite(waterMarkSmall, 0, 0);
   }
   await baseImage.writeAsync(filePathSimple)
 }
