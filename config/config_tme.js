@@ -13,7 +13,7 @@ module.exports.inputConfig = {
   part: [
     {
       path: 'other/0',
-      times: 59
+      times: 39
     }
   ]
 }

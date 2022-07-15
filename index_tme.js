@@ -86,7 +86,7 @@ async function toMakeNft(path, otherPath, times) {
             const key = baseDir[i];
             const ele = randomArr[i];
             const maxTimes = weightConfig[key][ele] * times;
-            if (XY[key][ele] === maxTimes) {
+            if (XY[key][ele] === Math.ceil(maxTimes)) {
               baseFlag = true;
               weightConfig[key].splice(ele, 1, 0);
               break;
@@ -100,7 +100,7 @@ async function toMakeNft(path, otherPath, times) {
               const ele = otherRandomArr[i];
               const key = otherKeys[i];
               const maxTimes = weightConfig[`${decorationDir}${otherIndex}`][key][ele] * times;
-              if(XY[decorationDir][`${key}${ele}`] === maxTimes) {
+              if(XY[decorationDir][`${key}${ele}`] === Math.ceil(maxTimes)) {
                 flag = true;
                 weightConfig[`${decorationDir}${otherIndex}`][key].splice(ele, 1, 0);
                 break;
